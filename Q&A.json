@@ -4,7 +4,7 @@
       "question": "2022年在韩国是属于女团的一年，年榜前十的歌曲均来自于女团。请问下列女团中哪一个没有中国成员？",
       "choices": [
         "A: Aespa",
-        "B: Red Velvet",
+        "B: New Jeans",
         "C: Twice",
         "D: (G)-Idle"
       ],
@@ -21,12 +21,12 @@
       "answer": 1
     },
     "3": {
-      "question": "近期，一首由“AI孙燕姿”演唱的《发如雪》意外出圈。截至5月20日，这段发布于4月14日的视频播放量已经达到了180.7万。请问孙燕姿不是以下那首歌曲的原唱？",
+      "question": "近期，一首由“AI孙燕姿”演唱的《发如雪》意外出圈。截至5月20日，这段发布于4月14日的视频播放量已经达到了180.7万。请问2000年孙燕姿以一票之差击败了哪位歌手夺得最佳新人奖？",
       "choices": [
-        "A: 逆光",
-        "B: 天黑黑",
-        "C: 我怀念的",
-        "D: 她说"
+        "A: 林俊杰",
+        "B: 范玮琪",
+        "C: 戴佩妮",
+        "D: 周杰伦"
       ],
       "answer": 3
     },
@@ -108,9 +108,9 @@
       "question": "原UCSD Biomedical Library在2020年改名成哪个名字？",
       "choices": [
         "A: WongAvery Library",
-        "B: Astor Judaica Library",
-        "C: Gilman Library",
-        "D: Geisel Library"
+        "B: WangAvery Library",
+        "C: WongAvory Library",
+        "D: WangAvory Library"
       ],
       "answer": 0
     },
