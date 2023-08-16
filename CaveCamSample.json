@@ -4,8 +4,8 @@
   "data": [
     {
       "name": "P1200612-Panorama",
-      "left_url": "https://willwen96.github.io/Jeopardy/P1200612-Panorama-L.tif",
-      "right_url": "https://willwen96.github.io/Jeopardy/P1200612-Panorama-R.tif",
+      "left_url": "http://67.58.51.114/data/CaveCam/P1200612-Panorama-L.tif",
+      "right_url": "http://67.58.51.114/data/CaveCam/P1200612-Panorama-R.tif",
       "site": "Luxor",
       "year": "2011",
       "position": [
@@ -17,8 +17,8 @@
     },
     {
       "name": "P1210750-Panorama",
-      "left_url": "https://willwen96.github.io/Jeopardy/P1210750-Panorama-L.tif",
-      "right_url": "https://willwen96.github.io/Jeopardy/P1210750-Panorama-R.tif",
+      "left_url": "http://67.58.51.114/data/CaveCam/P1210750-Panorama-L.tif",
+      "right_url": "http://67.58.51.114/data/CaveCam/P1210750-Panorama-R.tif",
       "site": "Luxor",
       "year": "2011",
       "position": [
@@ -30,8 +30,8 @@
     },
     {
       "name": "P1220049-Panorama",
-      "left_url": "https://willwen96.github.io/Jeopardy/P1220049-Panorama-L.tif",
-      "right_url": "https://willwen96.github.io/Jeopardy/P1220049-Panorama-R.tif",
+      "left_url": "http://67.58.51.114/data/CaveCam/P1220049-Panorama-L.tif",
+      "right_url": "http://67.58.51.114/data/CaveCam/P1220049-Panorama-R.tif",
       "site": "Israel",
       "year": "2013",
       "position": [
@@ -43,8 +43,8 @@
     },
     {
       "name": "P1500141-Panorama",
-      "left_url": "https://willwen96.github.io/Jeopardy/P1500141-Panorama-L.tif",
-      "right_url": "https://willwen96.github.io/Jeopardy/P1500141-Panorama-R.tif",
+      "left_url": "http://67.58.51.114/data/CaveCam/P1500141-Panorama-L.tif",
+      "right_url": "http://67.58.51.114/data/CaveCam/P1500141-Panorama-R.tif",
       "site": "Jordan",
       "year": "2017",
       "position": [
