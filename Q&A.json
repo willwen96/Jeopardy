@@ -126,7 +126,7 @@
   },
   "18": {
     "question": "请问下图是哪一个大企业的2023年初到现在的股票走势图？",
-    "choices": ["/stock.png"],
+    "choices": ["https://willwen96.github.io/Jeopardy/stock.png"],
     "answer": "Tesla"
   },
   "19": {
