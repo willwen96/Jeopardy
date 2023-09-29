@@ -9,14 +9,14 @@
 <body>
 <div id="question-page">
     <h1>Jeopardy</h1>
-    <h2 id="category-title"></h2>
     <div id="question"></div>
+    <div id="picture"></div>
     <div id="choices"></div>
-    <div id="timer" style="margin-top: 50px; font-size: 2rem">60</div>
+<!--    <div id="answer"></div>-->
+    <div id="timer" style="margin-top: 50px; font-size: 2rem">40</div>
     <div id="result"></div>
-    <section style="display: flex; flex-direction: row; width: 60vw; justify-content: space-evenly;">
-        <button id="button1" onclick="goBack()">返回主页面</button>
-        <button id="remove-wrong-answer-button" onclick="removeWrongAnswer()">去掉一个错误答案</button>
+    <section id="answer" style="display: flex; flex-direction: row; width: 60vw; justify-content: space-evenly;">
+        <button id="button1" onclick="goBack()">Back</button>
     </section>
 
 </div>
@@ -24,34 +24,40 @@
     // Define a global variable to store the loaded questions
     let questionsData;
     let countdown;
+    let selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || {};
 
     // Load the JSON file
-    function loadQuestions(callback) {
-        const xhr = new XMLHttpRequest();
-        xhr.overrideMimeType("application/json");
-        xhr.open("GET", "Q&A.json", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                const questions = JSON.parse(xhr.responseText);
-                questionsData = questions; // Store the loaded questions in the global variable
-                callback(questions);
-            }
-        };
-        xhr.send(null);
+    // function loadQuestions(callback) {
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.overrideMimeType("application/json");
+    //     xhr.open("GET", "Q&A.json", true);
+    //     xhr.onreadystatechange = function () {
+    //         if (xhr.readyState === 4 && xhr.status === 200) {
+    //             const questions = JSON.parse(xhr.responseText);
+    //             questionsData = questions; // Store the loaded questions in the global variable
+    //             callback(questions);
+    //         }
+    //     };
+    //     xhr.send(null);
+    // }
+    async function loadQuestions(callback) {
+        try {
+            const response = await fetch("Q&A.json");
+            const questions = await response.json();
+            questionsData = questions;
+            callback(questions);
+        } catch (error) {
+            console.error("Error loading questions:", error);
+        }
     }
 
     // Use the loaded questions
     function useQuestions(questions) {
         const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get("category");
         const questionNumber = parseInt(urlParams.get("question"));
 
-        // Update the category title
-        const categoryTitle = document.getElementById("category-title");
-        categoryTitle.innerHTML = category;
-
         // Get the question and choices based on the category and question number
-        const questionData = questions[category][questionNumber];
+        const questionData = questions[questionNumber];
         const question = questionData.question;
         const choices = questionData.choices;
 
@@ -59,17 +65,48 @@
         const questionDiv = document.getElementById("question");
         questionDiv.innerHTML = question;
 
-        const choicesDiv = document.getElementById("choices");
-        choices.forEach((choice, index) => {
-            const choiceButton = document.createElement("button");
-            choiceButton.setAttribute("class", "choice-button");
-            choiceButton.innerHTML = choice;
-            choiceButton.addEventListener("click", () => checkAnswer(index, questionData));
-            choicesDiv.appendChild(choiceButton);
-        });
+        if (choices.length === 4) {
+            const choicesDiv = document.getElementById("choices");
+            const fragment = document.createDocumentFragment();
+
+            choices.forEach((choice, index) => {
+                const choiceButton = document.createElement("button");
+                choiceButton.setAttribute("class", "choice-button");
+                choiceButton.innerHTML = choice;
+                choiceButton.addEventListener("click", () => checkAnswer(index, questionData));
+                fragment.appendChild(choiceButton);
+            });
+
+            choicesDiv.appendChild(fragment);
+        } else if (choices.length === 1) {
+            const answer = questionData.answer;
+            const imageDiv = document.getElementById("picture");
+            imageDiv.setAttribute("style", "width: 95%; margin: auto;");
+            const image = document.createElement("img");
+            image.setAttribute("src", choices[0]);
+            image.setAttribute("style", "width: 80%; max-width: 2880px");
+            imageDiv.appendChild(image);
+
+
+            const answerDiv = document.getElementById("answer");
+            const answerButton = document.createElement("button");
+            answerButton.innerHTML = "Answer";
+            answerButton.setAttribute("class", "answer-button");
+            answerButton.addEventListener("click", () => showAnswer(answer));
+            answerDiv.appendChild(answerButton);
+        } else {
+            const answer = questionData.answer;
+            const answerDiv = document.getElementById("answer");
+            const answerButton = document.createElement("button");
+            answerButton.innerHTML = "Answer";
+            answerButton.setAttribute("class", "answer-button");
+            answerButton.addEventListener("click", () => showAnswer(answer));
+            answerDiv.appendChild(answerButton);
+        }
+
 
         // Countdown timer
-        let timeLeft = 60;
+        let timeLeft = 40;
         const timerDiv = document.getElementById("timer");
 
         countdown = setInterval(() => {
@@ -84,7 +121,7 @@
     }
 
     function checkAnswer(choiceIndex, questionData) {
-        console.log("ALERT")
+        // console.log("ALERT")
         clearInterval(countdown);
 
         const resultDiv = document.getElementById("result");
@@ -93,14 +130,33 @@
         } else {
             const isCorrect = choiceIndex === questionData.answer;
             if (isCorrect) {
-                resultDiv.innerHTML = "Correct answer!";
-                setTimeout(() => {
-                    goBack();
-                }, 2000);
+                resultDiv.innerHTML = "&#x2713; Correct answer!";
+                resultDiv.setAttribute("style", "color: green; font-size: 24px; font-weight: 600");
+
+                // Set number to true in local storage
+                const urlParams = new URLSearchParams(window.location.search);
+                const questionNumber = parseInt(urlParams.get("question"));
+                selectedQuestions[questionNumber] = true;
+                localStorage.setItem("selectedQuestions", JSON.stringify(selectedQuestions));
+
             } else {
-                resultDiv.innerHTML = "Wrong answer!";
+                resultDiv.innerHTML = "&#x2717; Wrong answer!";
+                resultDiv.setAttribute("style", "color: red; font-size: 24px; font-weight: 600");
             }
         }
+    }
+
+    function showAnswer(answer) {
+        clearInterval(countdown);
+
+        // Set number to true in local storage
+        const urlParams = new URLSearchParams(window.location.search);
+        const questionNumber = parseInt(urlParams.get("question"));
+        selectedQuestions[questionNumber] = true;
+        localStorage.setItem("selectedQuestions", JSON.stringify(selectedQuestions));
+
+        const answerDiv = document.getElementById("result");
+        answerDiv.innerHTML = answer;
     }
 
     function goBack() {
@@ -110,31 +166,6 @@
     // Load the questions and use them
     loadQuestions(useQuestions);
 
-    function removeWrongAnswer() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get('category');
-        const questionNumber = parseInt(urlParams.get('question'));
-        const choicesContainer = document.getElementById("choices");
-        let buttons = choicesContainer.getElementsByClassName("choice-button");
-        let wrongChoices = [];
-
-        // Load the questions JSON file
-        loadQuestions((questions) => {
-            const questionData = questions[category][questionNumber];
-            const answerIndex = questionData.answer;
-
-            for (let i = 0; i < buttons.length; i++) {
-                if (i !== answerIndex) {
-                    wrongChoices.push(buttons[i]);
-                }
-            }
-
-            if (wrongChoices.length > 0) {
-                const randomIndex = Math.floor(Math.random() * wrongChoices.length);
-                wrongChoices[randomIndex].style.color = "red";
-            }
-        });
-    }
 
 
 </script>

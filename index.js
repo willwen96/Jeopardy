@@ -8,32 +8,19 @@ if (typeof Storage !== "undefined") {
     // Loop through the question links and add event listeners
     var questionLinks = document.querySelectorAll(".question-list a");
     questionLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            // Prevent the default link behavior
-            event.preventDefault();
-
-            // Extract the category and question number from the clicked link's href attribute
-            var href = event.target.getAttribute("href");
-            var category = href.match(/category=([^&]+)/)[1];
-            var questionNumber = href.match(/question=([^&]+)/)[1];
-            var questionKey = category + "-" + questionNumber;
-
-            // Add the clicked question to the list of selected questions in localStorage
-            selectedQuestions[questionKey] = true;
-            localStorage.setItem("selectedQuestions", JSON.stringify(selectedQuestions));
-
-            // Redirect to the question page
-            window.location.href = href;
-        });
-
         // Check if the question is selected and mark it accordingly
         var href = link.getAttribute("href");
-        var category = href.match(/category=([^&]+)/)[1];
-        var questionNumber = href.match(/question=([^&]+)/)[1];
-        var questionKey = category + "-" + questionNumber;
+        if (href) {
+            var urlParams = new URLSearchParams(href);
 
-        if (selectedQuestions.hasOwnProperty(questionKey)) {
-            link.classList.add("selected");
+            // Get the questionNumber from the URL
+            var questionNumber = urlParams.get("question");
+
+            // Assuming selectedQuestions is an object with keys for selected question numbers
+            // Check if the selectedQuestions object has a key matching the questionNumber
+            if (selectedQuestions.hasOwnProperty(questionNumber)) {
+                link.classList.add("selected");
+            }
         }
     });
 }
