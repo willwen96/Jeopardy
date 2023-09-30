@@ -10,7 +10,7 @@
     "answer": "鱼类和鸟类"
   },
   "3": {
-    "question": "近期，一首由“AI孙燕姿”演唱的《发如雪》意外出圈。截至9月26日，这段发布于4月14日的视频播放量已经达到了280万。请问2000年孙燕姿以一票之差击败了哪位歌手夺得最佳新人奖？",
+    "question": "几个月前，一首由“AI孙燕姿”演唱的《发如雪》意外出圈。截至9月26日，这段发布于4月14日的视频播放量已经达到了280万。请问2000年孙燕姿以一票之差击败了哪位歌手夺得最佳新人奖？",
     "choices": [
       "A: 林俊杰",
       "B: 范玮琪",
@@ -20,7 +20,7 @@
     "answer": 3
   },
   "4": {
-    "question": "中文里哪一句谚语描述的是如下句子：The wolf has a winning game when the shepherds quarrel",
+    "question": "中文里哪一句谚语描述的是如下句子：The wolf has a winning game when the shepherds quarrel.",
     "choices": [],
     "answer": "鹬蚌相争，渔翁得利 / 螳螂捕蝉，黄雀在后"
   },
@@ -40,9 +40,9 @@
     "answer": "那些花儿"
   },
   "7": {
-    "question": "在UCSD Geisel Library旁有这样一条Path，请问这出自于圣经创世纪中的哪一个典故？",
+    "question": "在UCSD Geisel Library旁有这样一条Path，请问这个灵感是源自圣经创世纪中的哪一个big picture？",
     "choices": ["https://stuartcollection.ucsd.edu/_images/artists/smith-snakepath/Main_smith-a-01.jpg"],
-    "answer": "伊甸园&智慧树: \"The serpent's slightly crowned body circles around a small 'garden of Eden' with several fruit trees including an apple, a fig and a pomegranate.\""
+    "answer": "伊甸园/智慧树: \"The serpent's slightly crowned body circles around a small 'garden of Eden' with several fruit trees including an apple, a fig and a pomegranate.\""
   },
   "8": {
     "question": "在2023年杭州亚运会上，电子竞技首次成为亚运会的正式项目。请说出本次电竞项目8个中的4个。",
@@ -90,7 +90,7 @@
     "answer": "项羽"
   },
   "14": {
-    "question": "请问UCSD Price Center旁的喷泉一共有几个小瀑布？",
+    "question": "请问UCSD Price Center旁的喷泉一共有几个小瀑布？(请勿离开现场^_^)",
     "choices": [
       "A: 4",
       "B: 5",
@@ -105,7 +105,7 @@
     "answer": "德国 - 玛利亚广场"
   },
   "16": {
-    "question": "请问下列哪一个“千岛之国”拥有最多的岛屿？",
+    "question": "请问下列哪一个享有“千岛之国”之称的国家拥有最多的岛屿？",
     "choices": [
       "A: 菲律宾",
       "B: 印度尼西亚",
@@ -125,14 +125,14 @@
     "answer": 2
   },
   "18": {
-    "question": "请问下图是哪一个大企业的2023年初到现在的股票走势图？",
+    "question": "请问下图是哪一个美国大厂的2023年初到现在的股票走势图？",
     "choices": ["https://willwen96.github.io/Jeopardy/stock.png"],
     "answer": "Tesla"
   },
   "19": {
-    "question": "《哈利波特》系列自2001年第一部上映以来，一共上映了8部作品，请问第一集是哈利波特与什么？",
+    "question": "《哈利波特》系列自2001年第一部上映以来，一共上映了8部作品，请问第二集是哈利波特与什么？",
     "choices": [],
-    "answer": "《哈利·波特与魔法石》"
+    "answer": "《哈利·波特与密室》"
   },
   "20": {
     "question": "足球是世界上最为火热的运动之一，每四年一届的世界杯也是每个足球迷不可缺少的狂欢盛宴。请问2006年世界杯的冠军是哪个国家？",
@@ -150,9 +150,9 @@
     "answer": "梅兰竹菊"
   },
   "22": {
-    "question": "找规律：请在下划线上填上符合规律的字母。\n MT_TFSS",
+    "question": "找规律：请在下划线上填上符合规律的字母。\n SMT_TFS",
     "choices": [],
-    "answer": "W (Mon Tue Wed Thu Fri Sat Sun)"
+    "answer": "W (Sun Mon Tue Wed Thu Fri Sat)"
   },
   "23": {
     "question": "截止目前，Steam游戏排行榜上评分最低的游戏是什么？",

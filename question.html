@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Jeopardy Game</title>
+    <title>问题</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
 <!--    <script src="script.js"></script>-->
 </head>
 <body>
 <div id="question-page">
-    <h1>Jeopardy</h1>
+    <div id="number"></div>
     <div id="question"></div>
     <div id="picture"></div>
     <div id="choices"></div>
@@ -60,6 +60,9 @@
         const questionData = questions[questionNumber];
         const question = questionData.question;
         const choices = questionData.choices;
+
+        const numberDiv = document.getElementById("number");
+        numberDiv.innerText = `Q${questionNumber}`;
 
         // Display the question and choices
         const questionDiv = document.getElementById("question");
